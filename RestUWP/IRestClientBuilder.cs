@@ -16,9 +16,10 @@ namespace RestUWP
         IRestClientBuilder SetMethod(HttpMethod method);
         IRestClientBuilder SetHeaders(Dictionary<String, String> headers);
         IRestClientBuilder SetContents(Dictionary<String, String> contents);
-        IRestClientBuilder AddParameter(String key, String value);
+        IRestClientBuilder AddParameter(String key, object value);
+        IRestClientBuilder AddParameters(Dictionary<String, String> parameters);
         IRestClientBuilder AddPathParameter(object parameter);
-        IRestClientBuilder AddHeader(String key, String value);
+        IRestClientBuilder AddHeader(String key, object value);
         RestClient Build();
     }
 }

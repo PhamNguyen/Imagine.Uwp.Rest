@@ -49,9 +49,9 @@ namespace RestUWP
             return this;
         }
 
-        public IRestClientBuilder AddParameter(string key, string value)
+        public IRestClientBuilder AddParameter(string key, object value)
         {
-            Client.AddParameter(key, value);
+            Client.AddParameter(key, value.ToString());
             return this;
         }
 
@@ -61,9 +61,9 @@ namespace RestUWP
             return this;
         }
 
-        public IRestClientBuilder AddHeader(string key, string value)
+        public IRestClientBuilder AddHeader(string key, object value)
         {
-            Client.AddHeader(key, value);
+            Client.AddHeader(key, value.ToString());
             return this;
         }
 
@@ -77,6 +77,17 @@ namespace RestUWP
             Client.Scheme = scheme;
             return this;
         }
-       
+
+        public IRestClientBuilder AddParameters(Dictionary<String, String> parameters)
+        {
+            if (parameters != null)
+            {
+                foreach (var parameter in parameters)
+                {
+                    Client.Contents[parameter.Key] = parameter.Value;
+                }
+            }
+            return this;
+        }
     }
 }

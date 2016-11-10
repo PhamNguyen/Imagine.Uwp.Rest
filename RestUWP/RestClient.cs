@@ -86,6 +86,18 @@ namespace RestUWP
         {
 
         }
+        public void AddParameters(Dictionary<String, String> parameters)
+        {
+            if (parameters != null)
+            {
+                foreach (var parameter in parameters)
+                {
+                    this.Contents[parameter.Key] = parameter.Value;
+                }
+            }
+         
+        }
+
 
         public void AddParameter(String key, String value)
         {
@@ -99,7 +111,8 @@ namespace RestUWP
 
         public void SetContents(Dictionary<String, String> data)
         {
-            this.Contents = data;
+            if(data != null)
+                this.Contents = data;
         }
 
         public async Task<T> ExecuteAsync<T>(Action<HttpResponseMessage> callBack = null)
@@ -345,11 +358,11 @@ namespace RestUWP
             StringBuilder builder = new StringBuilder();
             foreach (var content in Contents)
             {
-                builder.Append($"{content.Key}={content.Value}&");
+                builder.Append($"{ System.Net.WebUtility.HtmlEncode(content.Key)}={ System.Net.WebUtility.HtmlEncode(content.Value)}&");
             }
             String data = builder.ToString();
 
-            return System.Net.WebUtility.HtmlEncode(data.Substring(0, data.Length - 1));
+            return data.Substring(0, data.Length - 1);
         }
 
         private String BuildPath()
