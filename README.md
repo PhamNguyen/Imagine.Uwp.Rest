@@ -1,12 +1,12 @@
 # RestUWP
-# `Introdution`
+# Introdution
 RestUWP is open sources library for Universal Windows Platfrom to work with Rest API.
 
 Libraries:
   - `IRestClientBuilder.cs`
   - `RestClientBuilder`
   - `RestClient.cs`
-# `Using RestUWP`
+# Using RestUWP
 To use RestClient you have to provide required in formation:
   - `Scheme`: http or https
   - `Domain`: yourdomain.com
@@ -23,7 +23,7 @@ RestClient client = new RestClientBuilder().
                
 string result = await client.RequestStringAsync();
 ```
-# `RestClientBuilder`
+# RestClientBuilder
 
 It's use to create RestClient instance. You have to provide required information or extends request information via RestClientBuilder's methos before Build:
 
@@ -90,7 +90,7 @@ var student = await client.ExcuteAsync<Student>();
 // It's will return result from : http://harvard.com/people/student/create with provided infomations and then deserialize json result to Student object
 ```
 
-# `RestClient`
+# RestClient
 
 Use to execute an request to Rest API 
 # RestClient's Method
@@ -122,7 +122,7 @@ var student = await client.ExcuteAsync<Student>();
 // It's will return json result from : http://harvard.com/people/student/user?code=student_code_123 and deserialize json result to Student object
 ```
 
-### `Others request methods`:
+### Others request methods:
 
 #####  public async Task<String> `RequestStringAsync`(Action<HttpResponseMessage> callBack = null)
 ##### public async Task<byte[]> `RequestBytesAsync`(Action<HttpResponseMessage> callBack = null)
