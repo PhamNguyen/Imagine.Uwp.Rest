@@ -1,6 +1,6 @@
 # RestUWP
 # Introdution
-RestUWP is open sources library for Universal Windows Platfrom to work with Rest API.
+RestUWP is open sources library for Universal Windows Platform to work with Rest API.
 
 Libraries:
   - `IRestClientBuilder.cs`
