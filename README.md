@@ -130,7 +130,7 @@ var student = await client.ExcuteAsync<Student>();
 
 It's very easy to use. If you have any question please contact me via pham.nguyen@hotmail.com
 
-# Lisence 
+# Licence 
 
 The MIT License
 
