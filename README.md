@@ -6,6 +6,7 @@ Libraries:
   - `IRestClientBuilder.cs`
   - `RestClientBuilder`
   - `RestClient.cs`
+  
 # Using RestUWP
 To use RestClient you have to provide required in formation:
   - `Scheme`: http or https
