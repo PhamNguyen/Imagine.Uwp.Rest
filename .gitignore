@@ -24,3 +24,5 @@ RestUWP/obj/x64/Debug/qualifiers.txt
 RestUWP/obj/x64/Debug/qualifiers.txt.intermediate
 RestUWP/obj/x64/Debug/resources.resfiles
 RestUWP/obj/x64/Debug/resources.resfiles.intermediate
+/RestUWP/obj/Debug
+/RestUWP/bin/Debug
