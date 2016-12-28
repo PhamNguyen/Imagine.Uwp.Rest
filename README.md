@@ -94,7 +94,16 @@ var student = await client.ExcuteAsync<Student>();
 ```
 
 # RestClient
-
+### Contructor:
+```cs
+public RestClient(Uri uri)
+ 
+public RestClient(HttpScheme scheme, String host, String path)
+      
+public RestClient(HttpScheme scheme, String host, String path, params object[] queries)
+       
+public RestClient(HttpScheme scheme, String host, String path, HttpMethod method)
+```
 Use to execute an request to Rest API 
 # RestClient's Method
 #### public async Task<T> `ExecuteAsync`<T>(Action<HttpResponseMessage> callBack = null)
