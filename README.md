@@ -60,7 +60,9 @@ It's implement the methods from `IRestClientBuilder` interface
 - `SetContents`(Dictionary<String, String> contents): set request parameters
 - `AddParameter`(String key, object value): add a parameter
 - `AddParameters`(Dictionary<String, String> parameters): add dictionary<String, String> parameters
-- `AddPathParameter`(object parameter): add slat ("/") + path parameter ex: /123
+- `AddQuery`(object parameter): add slat ("/") + path parameter ex: /123
+- `AddQueries`(IEnumerable<Object> queries);
+- `SetQuery`(params object[] queries);
 - `AddHeader`(String key, object value): add a request header
 - RestClient `Build()`: Build RestClient with provided information
 
@@ -105,7 +107,7 @@ ex:
 string scheme = "http";
 string domain = "harvard.com";
 string path = "people/student"
-string userPath = "user"
+string query = "user"
 HttpMethod method = HttpMethod.Get;
 string code = "student_code_123";
 
@@ -114,7 +116,7 @@ RestClient client = new RestClientBuilder().
                SetHost(domain).
                SetHost(path).
                SetMethod(method).
-               AddPathParameter(userPath).
+               AddQuery(userPath).
                SetParameter("code", code).
                Build();
                 
