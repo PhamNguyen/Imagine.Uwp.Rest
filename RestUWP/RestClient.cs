@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
@@ -37,7 +38,7 @@ namespace RestUWP
         /// </summary>
         public HttpMethod Method { get; set; } = HttpMethod.Get;
 
-        public List<object> PathParameters { get; set; } = new List<object>();
+        public List<object> Queries { get; set; } = new List<object>();
 
         public Dictionary<String, String> Headers { get; set; } = new Dictionary<string, string>();
 
@@ -86,6 +87,7 @@ namespace RestUWP
         {
 
         }
+
         public void AddParameters(Dictionary<String, String> parameters)
         {
             if (parameters != null)
@@ -97,8 +99,7 @@ namespace RestUWP
             }
          
         }
-
-
+        
         public void AddParameter(String key, String value)
         {
             Contents[key] = value;
@@ -158,6 +159,7 @@ namespace RestUWP
                 {
                     responseMessage.EnsureSuccessStatusCode();
                     String responseContent = await responseMessage.Content.ReadAsStringAsync();
+                      if (string.IsNullOrEmpty(responseContent)) return default(T);
                     result = JsonConvert.DeserializeObject<T>(responseContent);
                 }
             }
@@ -218,8 +220,9 @@ namespace RestUWP
                     return await responseMessage.Content.ReadAsStringAsync();
                 }
             }
-            catch
+            catch (Exception ex)
             {
+                Debug.WriteLine(ex.Message);
                 if (callBack != null)
                 {
                     callBack(null);
@@ -367,11 +370,11 @@ namespace RestUWP
 
         private String BuildPath()
         {
-            if (PathParameters == null || !PathParameters.Any())
+            if (Queries == null || !Queries.Any())
                 return Path;
 
             StringBuilder builder = new StringBuilder();
-            foreach (var path in PathParameters)
+            foreach (var path in Queries)
             {
                 builder.Append($"{path}/");
             }

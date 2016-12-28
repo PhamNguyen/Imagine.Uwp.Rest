@@ -18,7 +18,9 @@ namespace RestUWP
         IRestClientBuilder SetContents(Dictionary<String, String> contents);
         IRestClientBuilder AddParameter(String key, object value);
         IRestClientBuilder AddParameters(Dictionary<String, String> parameters);
-        IRestClientBuilder AddPathParameter(object parameter);
+        IRestClientBuilder AddQuery(object parameter);
+        IRestClientBuilder AddQueries(IEnumerable<Object> queries);
+        IRestClientBuilder SetQuery(params object[] queries);
         IRestClientBuilder AddHeader(String key, object value);
         RestClient Build();
     }

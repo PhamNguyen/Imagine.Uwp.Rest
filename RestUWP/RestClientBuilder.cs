@@ -55,9 +55,9 @@ namespace RestUWP
             return this;
         }
 
-        public IRestClientBuilder AddPathParameter(object parameter)
+        public IRestClientBuilder AddQuery(object parameter)
         {
-            Client.PathParameters.Add(parameter);
+            Client.Queries.Add(parameter);
             return this;
         }
 
@@ -87,6 +87,19 @@ namespace RestUWP
                     Client.Contents[parameter.Key] = parameter.Value;
                 }
             }
+            return this;
+        }
+
+        public IRestClientBuilder SetQuery(params object[] queries)
+        {
+            Client.Queries = queries.ToList();
+            return this;
+        }
+
+        public IRestClientBuilder AddQueries(IEnumerable<object> queries)
+        {
+            if (Client.Queries == null) Client.Queries = new List<object>();
+            Client.Queries.AddRange(queries);
             return this;
         }
     }
