@@ -23,6 +23,8 @@ namespace RestUWP
         /// </summary>
         public String Scheme { get; set; }
 
+        public Uri Uri { get; set; }
+
         /// <summary>
         /// Host: yourhost.com
         /// </summary>
@@ -50,6 +52,7 @@ namespace RestUWP
             this.Path = Path;
             this.Headers = headers;
         }
+        
 
         public RestClient(String host, String path, Dictionary<String, String> headers, Dictionary<String, String> contents)
         {
@@ -63,6 +66,35 @@ namespace RestUWP
         {
             this.Host = host;
             this.Path = Path;
+        }
+
+        public RestClient(Uri uri)
+        {
+            this.Uri = uri;
+        }
+
+        public RestClient(HttpScheme scheme, String host, String path)
+        {
+            this.Scheme = scheme.ToString();
+            this.Host = host;
+            this.Path = Path;
+        }
+
+        public RestClient(HttpScheme scheme, String host, String path, params object[] queries)
+        {
+            this.Scheme = scheme.ToString();
+            this.Host = host;
+            this.Path = Path;
+            if(queries != null && queries.Any())
+                this.Queries = queries.ToList();
+        }
+
+        public RestClient(HttpScheme scheme, String host, String path, HttpMethod method)
+        {
+            this.Scheme = scheme.ToString();
+            this.Host = host;
+            this.Path = Path;
+            this.Method = method;
         }
 
         public RestClient(String host, String path, HttpMethod method)
@@ -124,7 +156,7 @@ namespace RestUWP
             HttpRequestMessage requestMessage = new HttpRequestMessage();
             requestMessage.Method = Method;
             ExtractHeaders(httpClient);
-            var uriBuilder = new UriBuilder
+            var uriBuilder = this.Uri != null ? new UriBuilder(Uri) : new UriBuilder
             {
                 Host = Host,
                 Path = BuildPath()
@@ -182,7 +214,7 @@ namespace RestUWP
             HttpRequestMessage requestMessage = new HttpRequestMessage();
             requestMessage.Method = Method;
             ExtractHeaders(httpClient);
-            var uriBuilder = new UriBuilder
+            var uriBuilder = this.Uri != null ? new UriBuilder(Uri) : new UriBuilder
             {
                 Host = Host,
                 Path = BuildPath()
@@ -240,7 +272,7 @@ namespace RestUWP
             HttpRequestMessage requestMessage = new HttpRequestMessage();
             requestMessage.Method = Method;
             ExtractHeaders(httpClient);
-            var uriBuilder = new UriBuilder
+            var uriBuilder = this.Uri != null ? new UriBuilder(Uri) : new UriBuilder
             {
                 Host = Host,
                 Path = BuildPath()
@@ -296,7 +328,7 @@ namespace RestUWP
             HttpRequestMessage requestMessage = new HttpRequestMessage();
             requestMessage.Method = Method;
             ExtractHeaders(httpClient);
-            var uriBuilder = new UriBuilder
+            var uriBuilder = this.Uri != null ? new UriBuilder(Uri) : new UriBuilder
             {
                 Host = Host,
                 Path = BuildPath()
