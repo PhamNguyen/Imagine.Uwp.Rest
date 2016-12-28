@@ -40,7 +40,7 @@ RestClient client = new RestClientBuilder().
                SetScheme(scheme).
                SetHost(domain).
                SetHost(path).
-               AddPathParameter(code).
+               AddQuery(code).
                Build();
                
 string result = await client.RequestStringAsync();
