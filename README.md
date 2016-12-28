@@ -40,7 +40,7 @@ RestClient client = new RestClientBuilder().
                SetScheme(scheme).
                SetHost(domain).
                SetHost(path).
-               AddPathParameter(code).
+               AddQuery(code).
                Build();
                
 string result = await client.RequestStringAsync();
@@ -60,7 +60,9 @@ It's implement the methods from `IRestClientBuilder` interface
 - `SetContents`(Dictionary<String, String> contents): set request parameters
 - `AddParameter`(String key, object value): add a parameter
 - `AddParameters`(Dictionary<String, String> parameters): add dictionary<String, String> parameters
-- `AddPathParameter`(object parameter): add slat ("/") + path parameter ex: /123
+- `AddQuery`(object parameter): add slat ("/") + path parameter ex: /123
+- `AddQueries`(IEnumerable<Object> queries);
+- `SetQuery`(params object[] queries);
 - `AddHeader`(String key, object value): add a request header
 - RestClient `Build()`: Build RestClient with provided information
 
@@ -92,7 +94,16 @@ var student = await client.ExcuteAsync<Student>();
 ```
 
 # RestClient
-
+### Contructor:
+```cs
+public RestClient(Uri uri)
+ 
+public RestClient(HttpScheme scheme, String host, String path)
+      
+public RestClient(HttpScheme scheme, String host, String path, params object[] queries)
+       
+public RestClient(HttpScheme scheme, String host, String path, HttpMethod method)
+```
 Use to execute an request to Rest API 
 # RestClient's Method
 #### public async Task<T> `ExecuteAsync`<T>(Action<HttpResponseMessage> callBack = null)
@@ -105,7 +116,7 @@ ex:
 string scheme = "http";
 string domain = "harvard.com";
 string path = "people/student"
-string userPath = "user"
+string query = "user"
 HttpMethod method = HttpMethod.Get;
 string code = "student_code_123";
 
@@ -114,7 +125,7 @@ RestClient client = new RestClientBuilder().
                SetHost(domain).
                SetHost(path).
                SetMethod(method).
-               AddPathParameter(userPath).
+               AddQuery(userPath).
                SetParameter("code", code).
                Build();
                 
