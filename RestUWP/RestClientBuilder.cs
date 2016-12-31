@@ -5,7 +5,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RestUWP
+namespace Imagine.Rest.UWP
 {
     public class RestClientBuilder : IRestClientBuilder
     {
