@@ -1,4 +1,4 @@
-# RestUWP
+# Rest Client for Universal Windows Platform
 # Introdution
 RestUWP is open sources library for Universal Windows Platform to work with Rest API.
 
