@@ -26,3 +26,6 @@ RestUWP/obj/x64/Debug/resources.resfiles
 RestUWP/obj/x64/Debug/resources.resfiles.intermediate
 /RestUWP/obj/Debug
 /RestUWP/bin/Debug
+/RestUWP/nuget
+/RestUWP/obj/Release
+/RestUWP/bin/Release

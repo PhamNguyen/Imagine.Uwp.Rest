@@ -7,8 +7,8 @@
     <ProjectGuid>{77CDF881-85B3-4B89-A9A5-7702BA73A3FE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Imagine.Rest.UWP</RootNamespace>
-    <AssemblyName>Imagine.Rest.UWP</AssemblyName>
+    <RootNamespace>Imagine.Uwp.Rest</RootNamespace>
+    <AssemblyName>Imagine.Uwp.Rest</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.14393.0</TargetPlatformVersion>
@@ -104,6 +104,7 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <None Include="nuget\Package.nuspec" />
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
@@ -113,6 +114,9 @@
     <Compile Include="RestClientBuilder.cs" />
     <Compile Include="RestConfiguration.cs" />
     <EmbeddedResource Include="Properties\RestUWP.rd.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="nuget\nuget.exe" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

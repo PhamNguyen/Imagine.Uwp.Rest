@@ -8,7 +8,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Imagine.Rest.UWP
+namespace Imagine.Uwp.Rest
 {
     public enum HttpScheme
     {
