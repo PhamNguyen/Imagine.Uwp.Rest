@@ -2,12 +2,12 @@
 # Introdution
 RestUWP is open sources library for Universal Windows Platform to work with Rest API.
 
-# Install via Nuget
+### Install via Nuget
 ``` 
 Install-Package Imagine.Rest
 ```
 
-Libraries:
+### Libraries:
   - `IRestClientBuilder.cs`
   - `RestClientBuilder`
   - `RestClient.cs`
