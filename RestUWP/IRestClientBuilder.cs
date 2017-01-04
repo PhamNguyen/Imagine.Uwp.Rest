@@ -16,6 +16,7 @@ namespace Imagine.Uwp.Rest
         IRestClientBuilder SetMethod(HttpMethod method);
         IRestClientBuilder SetHeaders(Dictionary<String, String> headers);
         IRestClientBuilder SetContents(Dictionary<String, String> contents);
+        IRestClientBuilder SetContent(String content);
         IRestClientBuilder AddParameter(String key, object value);
         IRestClientBuilder AddParameters(Dictionary<String, String> parameters);
         IRestClientBuilder AddQuery(object parameter);

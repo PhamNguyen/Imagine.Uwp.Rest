@@ -25,6 +25,12 @@ namespace Imagine.Uwp.Rest
             return this;
         }
 
+        public IRestClientBuilder SetContent(string content)
+        {
+            Client.SetContent(content);
+            return this;
+        }
+
         public IRestClientBuilder SetPath(string path)
         {
             Client.Path = path;

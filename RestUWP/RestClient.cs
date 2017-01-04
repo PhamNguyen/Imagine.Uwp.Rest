@@ -23,6 +23,11 @@ namespace Imagine.Uwp.Rest
         /// </summary>
         public String Scheme { get; set; }
 
+        /// <summary>
+        /// http content
+        /// </summary>
+        public String Content { get; set; }
+
         public Uri Uri { get; set; }
 
         /// <summary>
@@ -52,7 +57,7 @@ namespace Imagine.Uwp.Rest
             this.Path = Path;
             this.Headers = headers;
         }
-        
+
 
         public RestClient(String host, String path, Dictionary<String, String> headers, Dictionary<String, String> contents)
         {
@@ -85,7 +90,7 @@ namespace Imagine.Uwp.Rest
             this.Scheme = scheme.ToString();
             this.Host = host;
             this.Path = Path;
-            if(queries != null && queries.Any())
+            if (queries != null && queries.Any())
                 this.Queries = queries.ToList();
         }
 
@@ -115,6 +120,12 @@ namespace Imagine.Uwp.Rest
             this.Host = host;
         }
 
+        public void SetContent(String content)
+        {
+            if (String.IsNullOrEmpty(content)) return;
+            this.Content = content;
+        }
+
         public RestClient()
         {
 
@@ -129,9 +140,9 @@ namespace Imagine.Uwp.Rest
                     this.Contents[parameter.Key] = parameter.Value;
                 }
             }
-         
+
         }
-        
+
         public void AddParameter(String key, String value)
         {
             Contents[key] = value;
@@ -144,7 +155,7 @@ namespace Imagine.Uwp.Rest
 
         public void SetContents(Dictionary<String, String> data)
         {
-            if(data != null)
+            if (data != null)
                 this.Contents = data;
         }
 
@@ -173,7 +184,14 @@ namespace Imagine.Uwp.Rest
                 }
                 else if (Method == HttpMethod.Post)
                 {
-                    requestMessage.Content = new FormUrlEncodedContent(Contents);
+                    if (!String.IsNullOrEmpty(Content))
+                    {
+                        requestMessage.Content = new StringContent(Content);
+                    }
+                    else if (Contents != null && Contents.Any())
+                    {
+                        requestMessage.Content = new FormUrlEncodedContent(Contents);
+                    }
                 }
             }
             requestMessage.RequestUri = new Uri(uriBuilder.Uri.ToString(), UriKind.Absolute);
@@ -191,7 +209,7 @@ namespace Imagine.Uwp.Rest
                 {
                     responseMessage.EnsureSuccessStatusCode();
                     String responseContent = await responseMessage.Content.ReadAsStringAsync();
-                      if (string.IsNullOrEmpty(responseContent)) return default(T);
+                    if (string.IsNullOrEmpty(responseContent)) return default(T);
                     result = JsonConvert.DeserializeObject<T>(responseContent);
                 }
             }
@@ -231,7 +249,14 @@ namespace Imagine.Uwp.Rest
                 }
                 else if (Method == HttpMethod.Post)
                 {
-                    requestMessage.Content = new FormUrlEncodedContent(Contents);
+                    if (!String.IsNullOrEmpty(Content))
+                    {
+                        requestMessage.Content = new StringContent(Content);
+                    }
+                    else if (Contents != null && Contents.Any())
+                    {
+                        requestMessage.Content = new FormUrlEncodedContent(Contents);
+                    }
                 }
             }
 
@@ -289,7 +314,14 @@ namespace Imagine.Uwp.Rest
                 }
                 else if (Method == HttpMethod.Post)
                 {
-                    requestMessage.Content = new FormUrlEncodedContent(Contents);
+                    if (!String.IsNullOrEmpty(Content))
+                    {
+                        requestMessage.Content = new StringContent(Content);
+                    }
+                    else if(Contents != null && Contents.Any())
+                    {
+                        requestMessage.Content = new FormUrlEncodedContent(Contents);
+                    }
                 }
             }
             requestMessage.RequestUri = new Uri(uriBuilder.Uri.ToString(), UriKind.Absolute);
@@ -343,9 +375,16 @@ namespace Imagine.Uwp.Rest
                     string query = BuildQueryString();
                     uriBuilder.Query = query;
                 }
-                else
+                else if (Method == HttpMethod.Post)
                 {
-                    requestMessage.Content = new FormUrlEncodedContent(Contents);
+                    if (!String.IsNullOrEmpty(Content))
+                    {
+                        requestMessage.Content = new StringContent(Content);
+                    }
+                    else if (Contents != null && Contents.Any())
+                    {
+                        requestMessage.Content = new FormUrlEncodedContent(Contents);
+                    }
                 }
             }
             requestMessage.RequestUri = new Uri(uriBuilder.Uri.ToString(), UriKind.Absolute);
