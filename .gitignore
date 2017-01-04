@@ -29,3 +29,4 @@ RestUWP/obj/x64/Debug/resources.resfiles.intermediate
 /RestUWP/nuget
 /RestUWP/obj/Release
 /RestUWP/bin/Release
+/RestUWP/Imagine.Uwp.Rest.nuspec

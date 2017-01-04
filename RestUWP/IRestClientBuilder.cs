@@ -22,6 +22,8 @@ namespace Imagine.Uwp.Rest
         IRestClientBuilder AddQueries(IEnumerable<Object> queries);
         IRestClientBuilder SetQuery(params object[] queries);
         IRestClientBuilder AddHeader(String key, object value);
+        IRestClientBuilder SetHeaders(IEnumerable<KeyValuePair<string, string>> headers);
+        IRestClientBuilder SetUri(Uri uri);
         RestClient Build();
     }
 }

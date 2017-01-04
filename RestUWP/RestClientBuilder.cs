@@ -37,9 +37,25 @@ namespace Imagine.Uwp.Rest
             return this;
         }
 
+        public IRestClientBuilder SetUri(Uri uri)
+        {
+            Client.Uri = uri;
+            return this;
+        }
+
         public IRestClientBuilder SetHeaders(Dictionary<string, string> headers)
         {
+            if (headers == null)
+                return this;
             Client.Headers = headers;
+            return this;
+        }
+
+        public IRestClientBuilder SetHeaders(IEnumerable<KeyValuePair<string, string>> headers)
+        {
+            if (headers == null)
+                return this;
+            Client.Headers = headers.ToDictionary(p=>p.Key, p=>p.Value);
             return this;
         }
 
