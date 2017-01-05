@@ -67,7 +67,7 @@ It's implement the methods from `IRestClientBuilder` interface
 - `AddParameter`(String key, object value): add a parameter
 - `SetContent`(String content)
 - `SetUri`(Uri uri)
-- `SetHeader`(IEnumerable<KeyValuePair<String, String>>)
+- `SetHeader`(IEnumerable<KeyValuePair `<String, String>` >)
 - `AddParameters`(Dictionary<String, String> parameters): add dictionary<String, String> parameters
 - `AddQuery`(object parameter): add slat ("/") + path parameter ex: /123
 - `AddQueries`(IEnumerable<Object> queries);
