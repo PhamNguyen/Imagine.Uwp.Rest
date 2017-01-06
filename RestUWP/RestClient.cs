@@ -226,7 +226,7 @@ namespace Imagine.Uwp.Rest
 
         public async Task<String> RequestStringAsync(Action<HttpResponseMessage> callBack = null)
         {
-            if (String.IsNullOrEmpty(Host)) return null;
+            if (IsEmptyUri()) return null;
 
             HttpClient httpClient = new HttpClient();
             HttpRequestMessage requestMessage = new HttpRequestMessage();
@@ -291,7 +291,7 @@ namespace Imagine.Uwp.Rest
 
         public async Task<byte[]> RequestBytesAsync(Action<HttpResponseMessage> callBack = null)
         {
-            if (String.IsNullOrEmpty(Host)) return new byte[0];
+            if (IsEmptyUri()) return new byte[0];
 
             HttpClient httpClient = new HttpClient();
             HttpRequestMessage requestMessage = new HttpRequestMessage();
@@ -354,7 +354,7 @@ namespace Imagine.Uwp.Rest
 
         public async Task<Stream> RequestStreamAsync(Action<HttpResponseMessage> callBack = null)
         {
-            if (String.IsNullOrEmpty(Host)) return null;
+            if (IsEmptyUri()) return null;
 
             HttpClient httpClient = new HttpClient();
             HttpRequestMessage requestMessage = new HttpRequestMessage();
@@ -415,13 +415,18 @@ namespace Imagine.Uwp.Rest
             return null;
         }
 
+        private bool IsEmptyUri()
+        {
+            return IsEmptyUri();
+        }
+
         private void ExtractHeaders(HttpClient httpClient)
         {
             if (Headers != null && Headers.Any())
             {
                 foreach (var header in Headers)
                 {
-                    httpClient.DefaultRequestHeaders.Add(header.Key, header.Value);
+                    httpClient.DefaultRequestHeaders.TryAddWithoutValidation(header.Key, header.Value);
                 }
             }
         }

@@ -104,7 +104,6 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
-    <None Include="nuget\Package.nuspec" />
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
@@ -114,9 +113,6 @@
     <Compile Include="RestClientBuilder.cs" />
     <Compile Include="RestConfiguration.cs" />
     <EmbeddedResource Include="Properties\RestUWP.rd.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="nuget\nuget.exe" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
