@@ -429,7 +429,7 @@ namespace Imagine.Uwp.Rest
 
         private bool IsEmptyUri()
         {
-            return IsEmptyUri();
+            return Uri == null && String.IsNullOrEmpty(Host);
         }
 
         private void ExtractHeaders(HttpClient httpClient)
