@@ -37,6 +37,7 @@ namespace Imagine.Uwp.Rest
         IRestClientBuilder AddHeader(String key, object value);
         IRestClientBuilder SetHeaders(IEnumerable<KeyValuePair<string, string>> headers);
         IRestClientBuilder SetUri(Uri uri);
+        IRestClientBuilder SetPort(int port);
         RestClient Build();
     }
 }

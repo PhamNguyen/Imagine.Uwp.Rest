@@ -49,6 +49,12 @@ namespace Imagine.Uwp.Rest
             return this;
         }
 
+        public IRestClientBuilder SetPort(int port)
+        {
+            Client.Port = port;
+            return this;
+        }
+
         public IRestClientBuilder SetMethod(HttpMethod method)
         {
             Client.Method = method;
@@ -136,5 +142,6 @@ namespace Imagine.Uwp.Rest
             Client.Queries.AddRange(queries);
             return this;
         }
+
     }
 }

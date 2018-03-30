@@ -52,6 +52,7 @@ namespace Imagine.Uwp.Rest
         /// </summary>
         public String Path { get; set; } = String.Empty;
 
+        public int Port { get; set; } = -1;
         /// <summary>
         /// HttpMethod 
         /// </summary>
@@ -186,6 +187,8 @@ namespace Imagine.Uwp.Rest
             };
             if (!String.IsNullOrEmpty(Scheme))
                 uriBuilder.Scheme = Scheme;
+            if (this.Port > -1)
+                uriBuilder.Port = Port;
             String _requestResult = String.Empty;
             if (Contents != null && Contents.Any())
             {
@@ -252,6 +255,8 @@ namespace Imagine.Uwp.Rest
             if (!String.IsNullOrEmpty(Scheme))
                 uriBuilder.Scheme = Scheme;
             String _requestResult = String.Empty;
+            if (this.Port > -1)
+                uriBuilder.Port = Port;
             if (Contents != null && Contents.Any())
             {
                 if (Method == HttpMethod.Get)
@@ -316,6 +321,8 @@ namespace Imagine.Uwp.Rest
             };
             if (!String.IsNullOrEmpty(Scheme))
                 uriBuilder.Scheme = Scheme;
+            if (this.Port > -1)
+                uriBuilder.Port = Port;
             String _requestResult = String.Empty;
             if (Contents != null && Contents.Any())
             {
@@ -379,6 +386,8 @@ namespace Imagine.Uwp.Rest
             };
             if (!String.IsNullOrEmpty(Scheme))
                 uriBuilder.Scheme = Scheme;
+            if (this.Port > -1)
+                uriBuilder.Port = Port;
             String _requestResult = String.Empty;
             if (Contents != null && Contents.Any())
             {
